@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西南石油大学电子邮件系统</title>
+    <script src="../JS/jQuery.js"></script>
+
+    <style>
+        *{
+            font-size: 16px;
+        }
+        div.head{
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            background-color: #F5F5F5;
+            word-spacing: 45em;
+        }
+        div.middle{
+            width: 964px;
+            height: 460px;
+            margin:10px auto;
+            background-image: url("img/login_bg_03.jpg");
+        }
+        div.last{
+            width: 964px;
+            height: 70px;
+            margin: auto;
+            text-align: center;
+        }
+        div.content{
+            width: 320px;
+            height: 280px;
+            background-color: white;
+            position: relative;
+            top:30px;
+            left: 550px;
+        }
+        div.a{
+            width: 320px;
+            height: 40px;
+            text-align: center;
+            background-image: url("img/tablicurrent.png");
+        }
+        div.b{
+            width: 320px;
+            height: 250px;
+            padding: 15px;
+            word-spacing: 5em;
+        }
+        a{
+            text-decoration: none;
+        }
+        p.tip{
+            color: red;
+            font-size: 12px;
+        }
+        [type="text"]{
+            width: 280px;
+            margin: 10px auto;
+        }
+        [type="button"]{
+            width: 100px;
+            height: 35px;
+            background-image: url("img/login_btn.jpg");
+            text-align:center;
+            border: none;
+            margin: 0 185px;
+            color: white;
+        }
+        h3{
+            line-height: 0px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        <img src="../images/login_logo.png" alt="">
+        <a href="" >帮助</a>
+
+    </div>
+
+    <div class="middle">
+        <form id="login_form" action="login" method="post">
+            <div class="content">
+            
+                <div class="a"><p>账号登录</p></div>
+                <div class="b">
+                    <h3>用户登录</h3>
+                    <input type="text" id="UserName" name="txtName" placeholder="用户名">
+                    <input type="text" id="UserPwd" name="txtPwd" placeholder="密码">
+                    <p class="tip">学生选择@stu.swpu.edu.cn <span><a href="" style="font-size: 12px;">忘记密码</a></span></p>
+                    <input type="submit" id="log" value="登 录" >
+                </div>
+            
+             </div>
+        </form>
+
+    </div>
+
+    <div class="last">
+        <p>西南石油大学</p>
+    </div>
+
+    <script>
+        var usn=document.getElementById('txtName');
+        var psw=document.getElementById('txtPwd');
+       function login(){
+       
+         if(usn.value=="tom" && psw.value =="123")
+         {
+             window.location.href="http://study.swpu.edu.cn/portal";
+             return true;
+         }
+         else{
+             window.alert("用户名或密码为空!");
+         }
+       }
+
+        function getCookie(cname){
+            var name = cname + "=";
+            var ca = document.cookie.split(";");
+            for(var i=0;i<ca.length;i++)
+            {
+                var c = ca[i].trim();
+                if(c.indexOf(name)==0){
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "";
+        }
+        function checkCookie() {
+            var user = getCookie("username");
+            var uname=document.getElementById("UserName");
+            var pwd=getCookie("password");
+            var upwd=document.getElementById("UserPwd");
+            if(user!=""){
+                var uname=document.getElementById("UserName");
+                uname.value=user;
+                upwd.value=pwd;
+            }
+
+        }
+        window.onload=function () {
+            checkCookie();
+        }
+    </script>
+</body>
+</html>
